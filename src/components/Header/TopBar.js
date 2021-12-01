@@ -16,6 +16,11 @@ import MailIcon from "@mui/icons-material/Mail";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import AddIcon from "@mui/icons-material/Add";
+import HomeIcon from "@mui/icons-material/Home";
+import { useNavigate } from "react-router-dom";
+import Autocomplete from "@mui/material/Autocomplete";
+import TextField from "@mui/material/TextField";
+import InputAdornment from "@mui/material/InputAdornment";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -60,6 +65,22 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function TopBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const navigate = useNavigate();
+  const [films, setFilms] = React.useState([]);
+  const appIp = "localhost";
+
+  React.useEffect(() => {
+    fetch("http://" + appIp + ":8080/betterimdb/films")
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw response;
+      })
+      .then((films) => {
+        setFilms(films);
+      });
+  }, []);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -113,8 +134,9 @@ export default function TopBar() {
             color="inherit"
             aria-label="open drawer"
             sx={{ mr: 2 }}
+            onClick={() => navigate("/")}
           >
-            <MenuIcon />
+            <HomeIcon />
           </IconButton>
           <Typography
             variant="h6"
@@ -124,15 +146,33 @@ export default function TopBar() {
           >
             Better IMDB
           </Typography>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
-            />
-          </Search>
+          <SearchIcon sx={{ ml: 2 }} />
+
+          <Autocomplete
+            id="free-solo-demo"
+            freeSolo
+            options={films.map((film) => film.title)}
+            renderInput={
+              (params) => (
+                <TextField
+                  {...params}
+                  sx={{ width: 300 }}
+                  variant="standard"
+                  InputProps={{
+                    ...params.InputProps,
+                    "aria-label": "search",
+                  }}
+                  placeholder="Search…"
+                />
+              )
+              // <StyledInputBase
+              //   {...params}
+              //   placeholder="Search…"
+              //   inputProps={{ "aria-label": "search" }}
+              // />
+            }
+          />
+
           {/* <Box sx={{ flexGrow: 1 }} /> */}
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
             <IconButton
@@ -142,6 +182,7 @@ export default function TopBar() {
               aria-controls={menuId}
               aria-haspopup="true"
               color="inherit"
+              onClick={() => navigate("/create")}
             >
               <AddIcon />
             </IconButton>

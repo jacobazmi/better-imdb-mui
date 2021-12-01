@@ -3,10 +3,10 @@ import { makeStyles } from "@mui/styles";
 import TopBar from "./Header/TopBar";
 import React from "react";
 
-const Layout = ({ children }) => {
+const Layout = ({ children, films }) => {
   return (
     <div className="fullPage">
-      <TopBar className="topbar" />
+      <TopBar className="topbar" films={films} />
       <div className="page">
         <div className="toolbar"></div>
         {children}
