@@ -68,6 +68,7 @@ const FilmCard = ({ film, handleDelete, getFilms }) => {
     <div>
       <Card>
         <CardHeader
+          titleTypographyProps={{ variant: "h6" }}
           action={
             <IconButton
               aria-label="settings"
