@@ -8,6 +8,8 @@ import Box from "@mui/material/Box";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
+import { createTheme } from "@mui/material/styles";
+import { Paper, ThemeProvider } from "@mui/material";
 
 const Films = () => {
   const [films, setFilms] = useState([]);
@@ -67,40 +69,53 @@ const Films = () => {
     });
   };
 
+  const theme = createTheme({
+    palette: {
+      mode: "dark",
+    },
+  });
+
   return (
     <Container className="filmsPage">
-      <Typography
-        variant="h3"
-        color="textSecondary"
-        component="h2"
-        sx={{ m: 1 }}
-        gutterBottom
-      >
-        Films
-      </Typography>
-      <div>
-        <FormGroup>
-          <FormControlLabel control={<Checkbox defaultChecked />} label="All" />
-          <FormControlLabel control={<Checkbox />} label="Action" />
-        </FormGroup>
-      </div>
-      {/* {loading ? <CircularProgress /> : <></>}
+      <ThemeProvider theme={theme}>
+        <Paper elevation={4} sx={{ p: 2 }}>
+          <Typography
+            variant="h3"
+            color="textSecondary"
+            component="h2"
+            sx={{ m: 1 }}
+            gutterBottom
+          >
+            Films
+          </Typography>
+          <div>
+            <FormGroup>
+              <FormControlLabel
+                control={<Checkbox defaultChecked />}
+                label="All"
+              />
+              <FormControlLabel control={<Checkbox />} label="Action" />
+            </FormGroup>
+          </div>
+          {/* {loading ? <CircularProgress /> : <></>}
       {error ? (
         <Alert severity="error">This is an error alert — check it out!</Alert>
       ) : (
         <></>
       )} */}
-      <Grid container spacing={3}>
-        {films.map((film) => (
-          <Grid item key={film.id} xs={6} md={6} lg={3}>
-            <FilmCard
-              film={film}
-              handleDelete={handleDelete}
-              getFilms={getFilms}
-            />
+          <Grid container spacing={3}>
+            {films.map((film) => (
+              <Grid item key={film.id} xs={6} md={6} lg={3}>
+                <FilmCard
+                  film={film}
+                  handleDelete={handleDelete}
+                  getFilms={getFilms}
+                />
+              </Grid>
+            ))}
           </Grid>
-        ))}
-      </Grid>
+        </Paper>
+      </ThemeProvider>
     </Container>
   );
 };

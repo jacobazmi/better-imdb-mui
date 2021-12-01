@@ -77,12 +77,12 @@ const Create = () => {
   return (
     <Container className="createContainer">
       <ThemeProvider theme={theme}>
-        <Paper sx={{ p: 2 }}>
+        <Paper elevation={4}>
           <Typography
             variant="h3"
             color="textSecondary"
             component="h2"
-            sx={{ m: 1 }}
+            sx={{ m: 1, p: 3, pb: 0 }}
             gutterBottom
           >
             Add a Film
@@ -93,6 +93,7 @@ const Create = () => {
             component="form"
             noValidate
             autoComplete="off"
+            sx={{ p: 3 }}
           >
             <TextField
               name="title"
@@ -100,7 +101,7 @@ const Create = () => {
               label="Film Title"
               variant="outlined"
               margin="dense"
-              sx={{ m: 1, width: "131ch" }}
+              sx={{ m: 1, width: "126ch" }}
               required
               onChange={handleAddFormChange}
             ></TextField>
@@ -152,7 +153,7 @@ const Create = () => {
               name="description"
               label="Description"
               multiline
-              sx={{ m: 1, width: "131ch" }}
+              sx={{ m: 1, width: "126ch" }}
               rows={2}
               onChange={handleAddFormChange}
             ></TextField>

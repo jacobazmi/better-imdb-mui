@@ -66,7 +66,7 @@ const FilmCard = ({ film, handleDelete, getFilms }) => {
 
   return (
     <div>
-      <Card>
+      <Card elevation={11}>
         <CardHeader
           titleTypographyProps={{ variant: "h6" }}
           action={

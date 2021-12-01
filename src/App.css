@@ -1,5 +1,5 @@
 .filmsPage {
-  background-color: #50545cfa;
+  margin: 30px;
 }
 
 .fullPage {
@@ -7,10 +7,12 @@
 }
 
 .createContainer {
-  padding: 10px;
+  /* padding: 10px; */
   margin-top: 50px;
+  justify-content: center;
+  align-items: center;
 }
 
 .text1 {
-  border-color: white !important;
+  border-color: #9399ac;
 }

@@ -8,10 +8,10 @@ const Layout = ({ children, films }) => {
     <div
       className="fullPage"
       style={{
-        backgroundColor: "#50545cfa",
+        backgroundColor: "#9399ac",
         backgroundImage:
           "url('https://image.freepik.com/free-vector/seamless-pattern-with-cinema-elements_225004-1155.jpg')",
-        backgroundBlendMode: "screen",
+        backgroundBlendMode: "darken",
       }}
     >
       <TopBar className="topbar" films={films} />
