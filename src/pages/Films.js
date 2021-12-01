@@ -5,6 +5,9 @@ import { Container, Typography } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
 import Alert from "@mui/material/Alert";
 import Box from "@mui/material/Box";
+import FormGroup from "@mui/material/FormGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
 
 const Films = () => {
   const [films, setFilms] = useState([]);
@@ -73,8 +76,14 @@ const Films = () => {
         sx={{ m: 1 }}
         gutterBottom
       >
-        All Films
+        Films
       </Typography>
+      <div>
+        <FormGroup>
+          <FormControlLabel control={<Checkbox defaultChecked />} label="All" />
+          <FormControlLabel control={<Checkbox />} label="Action" />
+        </FormGroup>
+      </div>
       {/* {loading ? <CircularProgress /> : <></>}
       {error ? (
         <Alert severity="error">This is an error alert — check it out!</Alert>

@@ -1,3 +1,16 @@
 .filmsPage {
-  background-color: rgba(184, 199, 199, 0.466);
+  background-color: #50545cfa;
+}
+
+.fullPage {
+  min-height: 100vh;
+}
+
+.createContainer {
+  padding: 10px;
+  margin-top: 50px;
+}
+
+.text1 {
+  border-color: white !important;
 }

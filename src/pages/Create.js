@@ -14,6 +14,8 @@ import {
   Select,
 } from "@mui/material";
 import React, { useState } from "react";
+import { createTheme } from "@mui/material/styles";
+import { Paper, ThemeProvider } from "@mui/material";
 
 const Create = () => {
   const [addFormData, setAddFormData] = useState({
@@ -66,61 +68,73 @@ const Create = () => {
     });
   };
 
-  return (
-    <Container>
-      <Typography
-        variant="h3"
-        color="textSecondary"
-        component="h2"
-        sx={{ m: 1 }}
-        gutterBottom
-      >
-        Add a film
-      </Typography>
+  const theme = createTheme({
+    palette: {
+      mode: "dark",
+    },
+  });
 
-      <Box component="form" noValidate autoComplete="off">
-        <TextField
-          name="title"
-          label="Film Title"
-          variant="outlined"
-          sx={{ m: 1 }}
-          // color="secondary"
-          margin="dense"
-          fullWidth
-          required
-          onChange={handleAddFormChange}
-        ></TextField>
-        <TextField
-          name="year"
-          label="Release Year"
-          variant="outlined"
-          type="number"
-          sx={{ m: 1, width: "25ch" }}
-          // color="secondary"
-          margin="dense"
-          required
-          onChange={handleAddFormChange}
-        ></TextField>
-        <TextField
-          name="length"
-          label="Runtime"
-          variant="outlined"
-          type="number"
-          sx={{ m: 1, width: "25ch" }}
-          // color="secondary"
-          margin="dense"
-          onChange={handleAddFormChange}
-        ></TextField>
-        <TextField
-          name="rating"
-          label="Rating"
-          variant="outlined"
-          sx={{ m: 1, width: "25ch" }}
-          // color="secondary"
-          margin="dense"
-          onChange={handleAddFormChange}
-        ></TextField>
-        {/* <TextField
+  return (
+    <Container className="createContainer">
+      <ThemeProvider theme={theme}>
+        <Paper sx={{ p: 2 }}>
+          <Typography
+            variant="h3"
+            color="textSecondary"
+            component="h2"
+            sx={{ m: 1 }}
+            gutterBottom
+          >
+            Add a Film
+          </Typography>
+
+          <Box
+            className="createBox"
+            component="form"
+            noValidate
+            autoComplete="off"
+          >
+            <TextField
+              name="title"
+              className="text1"
+              label="Film Title"
+              variant="outlined"
+              margin="dense"
+              sx={{ m: 1, width: "131ch" }}
+              required
+              onChange={handleAddFormChange}
+            ></TextField>
+            <TextField
+              name="year"
+              label="Release Year"
+              variant="outlined"
+              type="number"
+              sx={{ m: 1, width: "25ch" }}
+              // color="secondary"
+              margin="dense"
+              required
+              onChange={handleAddFormChange}
+            ></TextField>
+            <TextField
+              name="length"
+              label="Runtime"
+              variant="outlined"
+              type="number"
+              sx={{ m: 1, width: "25ch" }}
+              // color="secondary"
+              margin="dense"
+              onChange={handleAddFormChange}
+            ></TextField>
+            <TextField
+              name="rating"
+              label="Rating"
+              variant="outlined"
+              sx={{ m: 1, width: "25ch" }}
+              // color="secondary"
+              margin="dense"
+              onChange={handleAddFormChange}
+            ></TextField>
+            {/* <TextField
           variant="outlined"
           color="secondary"
           margin="dense"
@@ -134,40 +148,41 @@ const Create = () => {
           <MenuItem value={20}>Twenty</MenuItem>
           <MenuItem value={30}>Thirty</MenuItem>
         </TextField> */}
-        <TextField
-          name="description"
-          label="Description"
-          multiline
-          sx={{ m: 1 }}
-          fullWidth
-          rows={2}
-          onChange={handleAddFormChange}
-        ></TextField>
-        <Button
-          onClick={handleAddFormSubmit}
-          type="submit"
-          sx={{ m: 1 }}
-          // color="secondary"
-          variant="contained"
-          endIcon={<KeyboardArrowRight />}
-        >
-          Submit
-        </Button>
-        {success ? (
-          <Alert severity="success" sx={{ m: 1 }}>
-            Film added!
-          </Alert>
-        ) : (
-          <></>
-        )}
-        {failed ? (
-          <Alert severity="warning" sx={{ m: 1 }}>
-            Film not added!
-          </Alert>
-        ) : (
-          <></>
-        )}
-      </Box>
+            <TextField
+              name="description"
+              label="Description"
+              multiline
+              sx={{ m: 1, width: "131ch" }}
+              rows={2}
+              onChange={handleAddFormChange}
+            ></TextField>
+            <Button
+              onClick={handleAddFormSubmit}
+              type="submit"
+              sx={{ m: 1 }}
+              // color="secondary"
+              variant="contained"
+              endIcon={<KeyboardArrowRight />}
+            >
+              Submit
+            </Button>
+            {success ? (
+              <Alert severity="success" sx={{ m: 1 }}>
+                Film added!
+              </Alert>
+            ) : (
+              <></>
+            )}
+            {failed ? (
+              <Alert severity="warning" sx={{ m: 1 }}>
+                Film not added!
+              </Alert>
+            ) : (
+              <></>
+            )}
+          </Box>
+        </Paper>
+      </ThemeProvider>
     </Container>
   );
 };

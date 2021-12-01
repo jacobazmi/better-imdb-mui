@@ -5,7 +5,15 @@ import React from "react";
 
 const Layout = ({ children, films }) => {
   return (
-    <div className="fullPage">
+    <div
+      className="fullPage"
+      style={{
+        backgroundColor: "#50545cfa",
+        backgroundImage:
+          "url('https://image.freepik.com/free-vector/seamless-pattern-with-cinema-elements_225004-1155.jpg')",
+        backgroundBlendMode: "screen",
+      }}
+    >
       <TopBar className="topbar" films={films} />
       <div className="page">
         <div className="toolbar"></div>
