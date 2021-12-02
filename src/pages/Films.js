@@ -17,6 +17,7 @@ const Films = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const appIp = "localhost";
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     fetch("http://" + appIp + ":8080/betterimdb/films")
@@ -107,6 +108,7 @@ const Films = () => {
             {films.map((film) => (
               <Grid item key={film.id} xs={6} md={6} lg={3}>
                 <FilmCard
+                  searchTerm={searchTerm}
                   film={film}
                   handleDelete={handleDelete}
                   getFilms={getFilms}

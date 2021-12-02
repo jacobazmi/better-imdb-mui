@@ -21,6 +21,8 @@ import { useNavigate } from "react-router-dom";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
+import { createTheme } from "@mui/material/styles";
+import { Paper, ThemeProvider } from "@mui/material";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -114,72 +116,82 @@ export default function TopBar() {
     </Menu>
   );
 
+  const theme = createTheme({
+    palette: {
+      mode: "dark",
+    },
+  });
+
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar style={{ background: "#484e5c" }} position="static">
-        <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-            onClick={() => navigate("/")}
-          >
-            <HomeIcon />
-          </IconButton>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ display: { xs: "none", sm: "block" } }}
-          >
-            Better IMDB
-          </Typography>
-          <SearchIcon sx={{ ml: 2 }} />
+    <ThemeProvider theme={theme}>
+      <Paper>
+        <Box sx={{ flexGrow: 1 }}>
+          <AppBar elevation={20} position="static">
+            <Toolbar>
+              <IconButton
+                size="large"
+                edge="start"
+                color="inherit"
+                aria-label="open drawer"
+                sx={{ mr: 2 }}
+                onClick={() => navigate("/")}
+              >
+                <HomeIcon />
+              </IconButton>
+              <Typography
+                variant="h6"
+                noWrap
+                component="div"
+                sx={{ display: { xs: "none", sm: "block" } }}
+              >
+                Better IMDB
+              </Typography>
+              <SearchIcon sx={{ ml: 2 }} />
 
-          <Autocomplete
-            id="free-solo-demo"
-            freeSolo
-            options={films.map((film) => film.title)}
-            renderInput={
-              (params) => (
-                <TextField
-                  {...params}
-                  sx={{ width: 300 }}
-                  variant="standard"
-                  InputProps={{
-                    ...params.InputProps,
-                    "aria-label": "search",
-                  }}
-                  placeholder="Search…"
-                />
-              )
-              // <StyledInputBase
-              //   {...params}
-              //   placeholder="Search…"
-              //   inputProps={{ "aria-label": "search" }}
-              // />
-            }
-          />
+              <Autocomplete
+                id="free-solo-demo"
+                freeSolo
+                options={films.map((film) => film.title)}
+                renderInput={
+                  (params) => (
+                    <TextField
+                      {...params}
+                      sx={{ width: 300 }}
+                      variant="standard"
+                      InputProps={{
+                        ...params.InputProps,
+                        "aria-label": "search",
+                      }}
+                      placeholder="Search…"
+                    />
+                  )
+                  // <StyledInputBase
+                  //   {...params}
+                  //   placeholder="Search…"
+                  //   inputProps={{ "aria-label": "search" }}
+                  // />
+                }
+              />
 
-          {/* <Box sx={{ flexGrow: 1 }} /> */}
-          <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            <IconButton
-              size="large"
-              // edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              color="inherit"
-              onClick={() => navigate("/create")}
-            >
-              <AddIcon />
-            </IconButton>
-          </Box>
-        </Toolbar>
-      </AppBar>
-      {/* {renderMenu} */}
-    </Box>
+              {/* <Box sx={{ flexGrow: 1 }} /> */}
+              <Box sx={{ display: { xs: "none", md: "flex" } }}>
+                <IconButton
+                  size="large"
+                  // edge="end"
+                  aria-label="account of current user"
+                  aria-controls={menuId}
+                  aria-haspopup="true"
+                  color="inherit"
+                  onClick={() => navigate("/create")}
+                >
+                  <AddIcon />
+                </IconButton>
+              </Box>
+            </Toolbar>
+          </AppBar>
+          {/* {renderMenu} */}
+        </Box>
+      </Paper>
+    </ThemeProvider>
   );
 }

@@ -8,7 +8,7 @@ const Layout = ({ children, films }) => {
     <div
       className="fullPage"
       style={{
-        backgroundColor: "#9399ac",
+        backgroundColor: "#4d4f58",
         backgroundImage:
           "url('https://image.freepik.com/free-vector/seamless-pattern-with-cinema-elements_225004-1155.jpg')",
         backgroundBlendMode: "darken",
