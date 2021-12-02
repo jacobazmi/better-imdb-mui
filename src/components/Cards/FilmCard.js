@@ -92,7 +92,6 @@ const FilmCard = ({ film, handleDelete, getFilms }) => {
           subheader={
             film.year + "  •  " + film.length + " mins" + "  •  " + film.rating
           }
-          disableSpacing
         />
         <CardActions>
           <ExpandMore

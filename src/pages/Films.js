@@ -7,7 +7,8 @@ import Alert from "@mui/material/Alert";
 import Box from "@mui/material/Box";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
+import Radio from "@mui/material/Radio";
+import { RadioGroup } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import { Paper, ThemeProvider } from "@mui/material";
 
@@ -18,6 +19,7 @@ const Films = () => {
   const [error, setError] = useState(null);
   const appIp = "localhost";
   const [searchTerm, setSearchTerm] = useState("");
+  const [genre, setGenre] = useState("all");
 
   useEffect(() => {
     fetch("http://" + appIp + ":8080/betterimdb/films")
@@ -70,6 +72,32 @@ const Films = () => {
     });
   };
 
+  // const selectTerm = "action";
+
+  const handleGenreSelect = (selectTerm) => {
+    setGenre(selectTerm);
+    if (selectTerm === "all") {
+      getFilms();
+    } else {
+      fetch(
+        "http://" +
+          appIp +
+          ":8080/betterimdb/films" +
+          "/search/genres/?genre.name=" +
+          selectTerm
+      )
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          }
+          throw response;
+        })
+        .then((films) => {
+          setFilms(films);
+        });
+    }
+  };
+
   const theme = createTheme({
     palette: {
       mode: "dark",
@@ -90,13 +118,84 @@ const Films = () => {
             Films
           </Typography>
           <div>
-            <FormGroup>
+            <RadioGroup
+              row
+              value={genre}
+              onChange={(e) => handleGenreSelect(e.target.value)}
+            >
+              <FormControlLabel value="all" control={<Radio />} label="All" />
               <FormControlLabel
-                control={<Checkbox defaultChecked />}
-                label="All"
+                value="animation"
+                control={<Radio />}
+                label="Animation"
               />
-              <FormControlLabel control={<Checkbox />} label="Action" />
-            </FormGroup>
+              <FormControlLabel
+                value="children"
+                control={<Radio />}
+                label="Children"
+              />
+              <FormControlLabel
+                value="classics"
+                control={<Radio />}
+                label="Classics"
+              />
+              <FormControlLabel
+                value="comedy"
+                control={<Radio />}
+                label="Comedy"
+              />
+              <FormControlLabel
+                value="documentary"
+                control={<Radio />}
+                label="Documentary"
+              />
+              <FormControlLabel
+                value="drame"
+                control={<Radio />}
+                label="Drama"
+              />
+              <FormControlLabel
+                value="family"
+                control={<Radio />}
+                label="Family"
+              />
+              <FormControlLabel
+                value="foreign"
+                control={<Radio />}
+                label="Foreign"
+              />
+              <FormControlLabel
+                value="games"
+                control={<Radio />}
+                label="Games"
+              />
+              <FormControlLabel
+                value="horror"
+                control={<Radio />}
+                label="Horror"
+              />
+              <FormControlLabel
+                value="music"
+                control={<Radio />}
+                label="Music"
+              />
+              <FormControlLabel value="new" control={<Radio />} label="New" />
+              <FormControlLabel
+                value="sci-fi"
+                control={<Radio />}
+                label="Sci-Fi"
+              />
+              <FormControlLabel
+                value="sports"
+                control={<Radio />}
+                label="Sports"
+              />
+              <FormControlLabel
+                value="travel"
+                control={<Radio />}
+                label="Travel"
+              />
+            </RadioGroup>
           </div>
           {/* {loading ? <CircularProgress /> : <></>}
       {error ? (
