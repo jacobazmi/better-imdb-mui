@@ -119,6 +119,7 @@ const Films = () => {
           </Typography>
           <div>
             <RadioGroup
+              sx={{ m: 1 }}
               row
               value={genre}
               onChange={(e) => handleGenreSelect(e.target.value)}

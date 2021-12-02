@@ -101,7 +101,8 @@ const Create = () => {
               label="Film Title"
               variant="outlined"
               margin="dense"
-              sx={{ m: 1, width: "126ch" }}
+              fullWidth
+              sx={{ m: 1 }}
               required
               onChange={handleAddFormChange}
             ></TextField>
@@ -153,7 +154,8 @@ const Create = () => {
               name="description"
               label="Description"
               multiline
-              sx={{ m: 1, width: "126ch" }}
+              fullWidth
+              sx={{ m: 1 }}
               rows={2}
               onChange={handleAddFormChange}
             ></TextField>
