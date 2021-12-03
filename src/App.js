@@ -5,7 +5,7 @@ import Films from "./pages/Films";
 import Create from "./pages/Create";
 import Layout from "./components/Layout";
 
-export const appIp = "18.234.119.161";
+export const appIp = "localhost";
 
 function App() {
   return (
