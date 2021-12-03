@@ -6,16 +6,11 @@ import {
   Typography,
   Box,
   Alert,
-  FormControl,
-  OutlinedInput,
-  FormHelperText,
-  InputLabel,
-  MenuItem,
-  Select,
 } from "@mui/material";
 import React, { useState } from "react";
 import { createTheme } from "@mui/material/styles";
 import { Paper, ThemeProvider } from "@mui/material";
+import { appIp } from "../App";
 
 const Create = () => {
   const [addFormData, setAddFormData] = useState({
@@ -25,7 +20,7 @@ const Create = () => {
     length: 0,
     rating: "",
   });
-  const appIp = "localhost";
+  // const appIp = "localhost";
   const [success, setSuccess] = useState(false);
   const [failed, setFailed] = useState(false);
 

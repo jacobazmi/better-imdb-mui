@@ -6,12 +6,13 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { MenuItem, TextField } from "@mui/material";
+import { appIp } from "../../App";
 
 export default function EditButton({ film, getFilms }) {
   const [open, setOpen] = React.useState(false);
 
   const [editFilmId, setEditFilmId] = React.useState(null);
-  const appIp = "localhost";
+  // const appIp = "localhost";
 
   const [editFormData, setEditFormData] = React.useState({
     title: "",

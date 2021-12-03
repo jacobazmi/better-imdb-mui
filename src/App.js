@@ -1,9 +1,11 @@
 import "./App.css";
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Films from "./pages/Films";
 import Create from "./pages/Create";
 import Layout from "./components/Layout";
+
+export const appIp = "18.234.119.161";
 
 function App() {
   return (

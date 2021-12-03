@@ -5,11 +5,10 @@ import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import { IconButton, Typography } from "@mui/material";
-import { DeleteOutlined, MoreVert } from "@mui/icons-material";
+import { MoreVert } from "@mui/icons-material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { styled } from "@mui/material/styles";
 import Collapse from "@mui/material/Collapse";
-import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import DeleteButton from "./DeleteButton";
 import EditButton from "./EditButton";
@@ -64,8 +63,6 @@ const FilmCard = ({ film, handleDelete, getFilms }) => {
       <DeleteButton handleDelete={handleDelete} film={film} />
     </Menu>
   );
-
-  const firstWord = film.title.split(" ")[0];
 
   return (
     <div>

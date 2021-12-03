@@ -4,21 +4,17 @@ import { Grid } from "@mui/material";
 import { Container, Typography } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
 import Alert from "@mui/material/Alert";
-import Box from "@mui/material/Box";
-import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Radio from "@mui/material/Radio";
 import { RadioGroup } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import { Paper, ThemeProvider } from "@mui/material";
+import { appIp } from "../App";
 
 const Films = () => {
   const [films, setFilms] = useState([]);
-  // const appIp = "localhost";
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const appIp = "localhost";
-  const [searchTerm, setSearchTerm] = useState("");
   const [genre, setGenre] = useState("all");
 
   useEffect(() => {
@@ -71,8 +67,6 @@ const Films = () => {
       });
     });
   };
-
-  // const selectTerm = "action";
 
   const handleGenreSelect = (selectTerm) => {
     setGenre(selectTerm);
@@ -198,17 +192,10 @@ const Films = () => {
               />
             </RadioGroup>
           </div>
-          {/* {loading ? <CircularProgress /> : <></>}
-      {error ? (
-        <Alert severity="error">This is an error alert — check it out!</Alert>
-      ) : (
-        <></>
-      )} */}
           <Grid container spacing={3}>
             {films.map((film) => (
               <Grid item key={film.id} xs={6} md={6} lg={3}>
                 <FilmCard
-                  searchTerm={searchTerm}
                   film={film}
                   handleDelete={handleDelete}
                   getFilms={getFilms}
