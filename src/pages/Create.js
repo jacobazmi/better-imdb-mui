@@ -1,15 +1,13 @@
-import { KeyboardArrowRight } from "@mui/icons-material";
-import {
-  Button,
-  Container,
-  TextField,
-  Typography,
-  Box,
-  Alert,
-} from "@mui/material";
+import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
+import Button from "@mui/material/Button";
+import Container from "@mui/material/Container";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import Alert from "@mui/material/Alert";
+import Paper from "@mui/material/Paper";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 import React, { useState } from "react";
-import { createTheme } from "@mui/material/styles";
-import { Paper, ThemeProvider } from "@mui/material";
 import { appIp } from "../App";
 
 const Create = () => {

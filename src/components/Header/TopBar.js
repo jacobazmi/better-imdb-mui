@@ -11,7 +11,8 @@ import { useNavigate } from "react-router-dom";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import { createTheme } from "@mui/material/styles";
-import { Paper, ThemeProvider } from "@mui/material";
+import Paper from "@mui/material/Paper";
+import { ThemeProvider } from "@mui/material/styles";
 import { appIp } from "../../App";
 
 export default function TopBar() {
@@ -65,7 +66,7 @@ export default function TopBar() {
               </Typography>
               <SearchIcon sx={{ ml: 2 }} />
 
-              <Autocomplete
+              {/* <Autocomplete
                 id="free-solo-demo"
                 freeSolo
                 options={films.map((film) => film.title)}
@@ -81,7 +82,7 @@ export default function TopBar() {
                     placeholder="Search…"
                   />
                 )}
-              />
+              /> */}
               <Box sx={{ display: { xs: "none", md: "flex" } }}>
                 <IconButton
                   size="large"
